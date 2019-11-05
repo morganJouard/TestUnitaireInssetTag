@@ -22,6 +22,16 @@
         </dependency> 
    </dependencies>
 
+    <repositories>
+    <repository>
+<id>local</id>
+<url>file:///home/talend</url>
+    
+    </repository>
+
+    </repositories>
+
+
    <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
@@ -33,10 +43,42 @@
         <sonar.jdbc.password>sonar</sonar.jdbc.password>
         <sonar.host.url>http://localhost:9010/sonar</sonar.host.url>
     </properties>
+    <scm>
+        <connection>scm:git:git://github.com/morganjouard/TestUnitaireInssetTag.git</connection>
+        <developerConnection>scm:git:git@github.com:morganjouard/TestUnitaireInssetTag.git</developerConnection>
+        <url>https://github.com/morganjouard/TestUnitaireInssetTag</url>
+    </scm>
+
+
 
     <build>
         <plugins>
-            
+                <plugin>
+                    <!-- Release the current project - updating the POM and tagging in the SCM. -->
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.4.1</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.maven.scm</groupId>
+                            <artifactId>maven-scm-provider-gitexe</artifactId>
+                            <version>1.8.1</version>
+                        </dependency>
+                    </dependencies>
+<!--                    <configuration>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                         During release:perform, enable the "prod" profile 
+                        <releaseProfiles>prod</releaseProfiles>
+                         SOTECH-115 : Compiler les jar de sources durant la phase maven release:prepare 
+                         INTSYSSOFT-501 : les preparationGoals du maven-release-plugin n'activent pas les phases normales du cycle de vie Maven 
+                        <preparationGoals>clean process-resources source:jar-no-fork install</preparationGoals>
+                         MRELEASE-598 : ask only once per SNAPSHOT artifact 
+                        <forceUniqueArtifactVersion>true</forceUniqueArtifactVersion>
+                         SOTECH-100 : Ne plus demander si on doit résoudre les snapshots 
+                        <alwaysResolveSnapshots>true</alwaysResolveSnapshots>
+                         SOTECH-101 : Ne plus demander quel type de dépendances résoudre ( 0:All 1:Project Dependencies 2:Plugins 3:Reports 4:Extensions ) 
+                        <alwaysResolveDependencyType>1</alwaysResolveDependencyType>
+                    </configuration>-->
+                </plugin>
         
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
