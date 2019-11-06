@@ -22,14 +22,15 @@
         </dependency> 
    </dependencies>
 
-    <repositories>
+<distributionManagement>
     <repository>
-<id>local</id>
-<url>file:///home/talend</url>
-    
+        <uniqueVersion>false</uniqueVersion>
+        <id>corp1</id>
+        <name>Corporate Repository</name>
+        <url>file:///home/talend/</url>
+        <layout>default</layout>
     </repository>
-
-    </repositories>
+</distributionManagement>
 
 
    <properties>
